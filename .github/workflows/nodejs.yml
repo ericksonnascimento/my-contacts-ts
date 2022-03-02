@@ -1,0 +1,30 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [master, '`^(features?|releases?|hotfix(es)?)\/[a-z\d]+([-/_.][a-z\d]+)*$`gm']
+  pull_request:
+    branches: [master, '`^(features?|releases?|hotfix(es)?)\/[a-z\d]+([-/_.][a-z\d]+)*$`gm']
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          repo-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ github.token }}
+      - run: npm run test:coveralls
+      - name: Coveralls GitHub Action
+        uses: coverallsapp/github-action@v1.1.3
+        with:
+          github-token: ${{ github.token }}
