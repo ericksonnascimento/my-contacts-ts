@@ -27,8 +27,8 @@ jobs:
         with:
           node-version: '14'
       - run: npm install
-      - run: npm run test:coveralls
+      - run: make test-coverage
       - name: Coveralls GitHub Action
         uses: coverallsapp/github-action@v1.1.2
         with:
-          github-token: ${{ github.token }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
