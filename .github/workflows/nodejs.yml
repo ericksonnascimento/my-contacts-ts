@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [master, '`^(features?|releases?|hotfix(es)?)\/[a-z\d]+([-/_.][a-z\d]+)*$`gm']
+    branches: [master, '`^(features?|releases?|hotfix(es)?)\/[a-z\d]+([-/_.][a-z\d]+)*$']
   pull_request:
-    branches: [master, '`^(features?|releases?|hotfix(es)?)\/[a-z\d]+([-/_.][a-z\d]+)*$`gm']
+    branches: [master, '`^(features?|releases?|hotfix(es)?)\/[a-z\d]+([-/_.][a-z\d]+)*$']
 
 jobs:
   run-tests:
