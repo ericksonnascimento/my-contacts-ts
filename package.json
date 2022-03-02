@@ -13,6 +13,7 @@
         "test:coveralls": "npm run test:ci && coveralls < coverage/lcov.info"
     },
     "dependencies": {
+        "coveralls": "^3.1.1",
         "git-commit-msg-linter": "^4.1.1",
         "module-alias": "^2.2.2"
     },
