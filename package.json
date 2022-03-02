@@ -9,7 +9,9 @@
         "build:watch": "rimraf dist && tsc -p tsconfig-build.json -w",
         "test": "jest --passWithNoTests --no-cache --runInBand",
         "test:watch": "npm t -- --watch",
-        "test:coverage": "npm t -- --coverage"
+        "test:coverage": "npm t -- --coverage",
+        "test:ci": "npm test -- --coverage",
+        "test:coveralls": "npm run test:ci && coveralls < coverage/lcov.info"
     },
     "dependencies": {
         "git-commit-msg-linter": "^4.1.1",
@@ -20,6 +22,7 @@
         "@types/node": "^17.0.21",
         "@typescript-eslint/eslint-plugin": "^5.13.0",
         "@typescript-eslint/parser": "^5.13.0",
+        "coveralls": "^3.1.1",
         "dotenv": "^16.0.0",
         "eslint": "^8.10.0",
         "eslint-config-prettier": "^8.4.0",
