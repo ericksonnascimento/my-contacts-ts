@@ -9,7 +9,5 @@ export namespace CreateCategory {
     name: string;
   };
 
-  export type Output = {
-    category: Category;
-  };
+  export type Output = Category;
 }
