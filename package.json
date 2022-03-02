@@ -9,7 +9,8 @@
         "build:watch": "rimraf dist && tsc -p tsconfig-build.json -w",
         "test": "jest --passWithNoTests --no-cache --runInBand",
         "test:watch": "npm t -- --watch",
-        "test:coverage": "npm t -- --coverage"
+        "test:ci": "npm test -- --coverage",
+        "test:coveralls": "npm run test:ci && coveralls < coverage/lcov.info"
     },
     "dependencies": {
         "git-commit-msg-linter": "^4.1.1",
