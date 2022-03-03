@@ -1,37 +1,19 @@
-name: Node.js CI
-
+name: NodeJs
 on:
-  push:
-    branches:
-      - master
-      - 'feature/**'
-  pull_request:
-    types: [opened, reopened]
-    branches:
-      - master
-      - 'feature/**'
-
+  - push
+  - pull_request
 jobs:
-  run-tests:
+  test:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x]
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
         with:
-          node-version: '14'
-      - run: npm install
-      - run: npm run build --if-present
+          node-version: 14.x
+      - run: npm i
       - run: npm run test:coveralls
-      - name: Coveralls GitHub Action
-        uses: coverallsapp/github-action@v1.1.2
-        env:
-          COVERALLS_REPO_TOKEN: ${{secrets.REPO_TOKEN}}
+      - name: Upload coverage file to Coveralls using lcov.info
+        uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
