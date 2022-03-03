@@ -1,7 +1,8 @@
-name: NodeJs
+name: test
 on:
   - push
   - pull_request
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -11,8 +12,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - run: npm i
-      - run: npm run test:coveralls
+      - run: npm i # There is a bug with npm ci -> https://github.com/npm/cli/issues/558
+      - run: npm run coverage
       - name: Upload coverage file to Coveralls using lcov.info
         uses: coverallsapp/github-action@master
         with:

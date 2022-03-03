@@ -8,6 +8,7 @@
         "build": "rimraf dist && tsc -p tsconfig-build.json",
         "build:watch": "rimraf dist && tsc -p tsconfig-build.json -w",
         "test": "jest --passWithNoTests --no-cache --runInBand",
+        "coverage": "npm test -- --coverage --watchAll=false",
         "test:watch": "npm t -- --watch",
         "test:ci": "npm test -- --coverage",
         "test:coveralls": "npm run test:ci && coveralls < coverage/lcov.info"
