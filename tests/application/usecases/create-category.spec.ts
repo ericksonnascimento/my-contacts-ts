@@ -1,5 +1,6 @@
 import { DbCreateCategory } from '@/application/contracts';
 import { CreateCategoryService } from '@/application/services';
+import { CreateCategoryController } from '@/presentation/controllers/create-category-controller';
 import { mockCategoryInput, mockCategoryOuput } from '@/tests/domain/mocks';
 
 const createCategoryRepo: jest.Mocked<DbCreateCategory> = {
