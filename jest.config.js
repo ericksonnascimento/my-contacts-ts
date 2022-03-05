@@ -1,8 +1,12 @@
+const path = require('path');
+
+const file = path.join(path.resolve('./'), '/tests/infra/db/test-environment.js');
+console.log('file', file);
+
 module.exports = {
   collectCoverageFrom: [
     '<rootDir>/src/**/*.ts',
-    '!<rootDir>/src/main/**',
-    '!<rootDir>/src/**/index.ts'
+    '!<rootDir>/src/main/**'
   ],
   coverageDirectory: 'coverage',
   coverageProvider: 'babel',
@@ -10,14 +14,14 @@ module.exports = {
     '@/tests/(.+)': '<rootDir>/tests/$1',
     '@/(.+)': '<rootDir>/src/$1'
   },
-  testMatch: ['**/*.spec.ts'],
   roots: [
-    '<rootDir>/src',
     '<rootDir>/tests'
   ],
   transform: {
     '\\.ts$': 'ts-jest'
   },
   clearMocks: true,
-  setupFiles: ['dotenv/config']
+  setupFiles: ['dotenv/config'],
+  globalSetup : '<rootDir>/tests/global-setup.js',
+  globalTeardown : '<rootDir>/tests/global-teardown.js'
 }
