@@ -2,11 +2,11 @@ import { CreateCategory } from '@/domain/usecases';
 import { Controller, HttpResponse, serverError, created } from '@/presentation/contracts';
 
 export class CreateCategoryController implements Controller {
-  constructor(private readonly createCategory: CreateCategory) {}
+  constructor(private readonly useCase: CreateCategory) {}
 
   async handle(request: CreateCategoryController.Request): Promise<HttpResponse> {
     try {
-      const category = await this.createCategory.perform({
+      const category = await this.useCase.perform({
         name: request.name,
       });
 
