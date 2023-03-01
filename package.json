@@ -43,7 +43,7 @@
         "jest-environment-node": "^27.5.1",
         "jest-mock-extended": "2.0.4",
         "module-alias": "^2.2.2",
-        "nanoid": "^3.3.1",
+        "nanoid": "^4.0.1",
         "pg": "^8.7.3",
         "prisma": "^3.10.0",
         "testcontainers": "^8.4.0",
